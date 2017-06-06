@@ -1,17 +1,66 @@
 <template>
   <div id="app">
-    <hello></hello>
+
+    <section class="section" style="background-color: #302f33;">
+      <div class="hero-head">
+        <div class="container " >
+
+          <display-asset
+            v-for="(asset, id) in assets"
+            v-bind:asset="asset"
+            v-bind:key="asset.id">
+          </display-asset>
+
+        </div>
+      </div>
+    </section>
+
+
   </div>
 </template>
 
 <script>
-import Hello from './components/Hello'
+import DisplayAsset from './components/DisplayAsset'
 
 export default {
   name: 'app',
   components: {
-    Hello
-  }
+    DisplayAsset
+  },
+
+  data () {
+    return {
+      msg: 'Welcome to Your Vue.js App',
+      rates: {
+        xem: null,
+        xzc: null,
+      },
+      assets: [
+        {
+          name: "bitcoin",
+          // id: 0,
+          addresses: [],
+          imgSrc: "../assets/images/bitcoin.png"
+        },
+        {
+          name: "nem",
+          // id: 1,
+          addresses: [],
+          imgSrc: "../assets/images/nem.png"
+        },
+        {
+          name: "zcoin",
+          // id: 2,
+          addresses: [
+            "a5TKgRkNLahApJ6amFvkGZPiCeNioRUjnt"
+          ],
+          imgSrc: "../assets/images/zcoin.png"
+        },
+      ],
+
+    }
+  },
+
 }
 </script>
 
